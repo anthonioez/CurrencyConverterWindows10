@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{EFF73BF0-74DF-41F4-AE01-D28DE01F2D08}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CurrencyConverter</RootNamespace>
+    <AssemblyName>CurrencyConverter</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>CurrencyConverter_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>6A8876FCFEEC9A4BBB4CE17FDA42368A4A0B141D</PackageCertificateThumbprint>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AdView.xaml.cs">
+      <DependentUpon>AdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs" />
+    <Compile Include="CurrencyConverter.cs" />
+    <Compile Include="CurrencyLoader.cs" />
+    <Compile Include="CurrencySource.cs" />
+    <Compile Include="DataModel.cs" />
+    <Compile Include="PageFavorites.xaml.cs">
+      <DependentUpon>PageFavorites.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyModel.cs" />
+    <Compile Include="PageSelect.xaml.cs">
+      <DependentUpon>PageSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageMain.xaml.cs">
+      <DependentUpon>PageMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prefs.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="VisibilityConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Flags\ad.png" />
+    <Content Include="Flags\aed.png" />
+    <Content Include="Flags\afn.png" />
+    <Content Include="Flags\ang.png" />
+    <Content Include="Flags\awg.png" />
+    <Content Include="Flags\bmd.png" />
+    <Content Include="Flags\byn.png" />
+    <Content Include="Flags\clf.png" />
+    <Content Include="Flags\cup.png" />
+    <Content Include="Flags\fkp.png" />
+    <Content Include="Flags\ggp.png" />
+    <Content Include="Flags\gip.png" />
+    <Content Include="Flags\hkd.png" />
+    <Content Include="Flags\imp.png" />
+    <Content Include="Flags\jep.png" />
+    <Content Include="Flags\kyd.png" />
+    <Content Include="Flags\mop.png" />
+    <Content Include="Flags\shp.png" />
+    <Content Include="Flags\xcd.png" />
+    <Content Include="Flags\all.png" />
+    <Content Include="Flags\amd.png" />
+    <Content Include="Flags\aoa.png" />
+    <Content Include="Flags\ars.png" />
+    <Content Include="Flags\at.png" />
+    <Content Include="Flags\aud.png" />
+    <Content Include="Flags\azn.png" />
+    <Content Include="Flags\bam.png" />
+    <Content Include="Flags\bbd.png" />
+    <Content Include="Flags\bdt.png" />
+    <Content Include="Flags\be.png" />
+    <Content Include="Flags\xof.png" />
+    <Content Include="Flags\bgn.png" />
+    <Content Include="Flags\bhd.png" />
+    <Content Include="Flags\bif.png" />
+    <Content Include="Flags\bnd.png" />
+    <Content Include="Flags\bob.png" />
+    <Content Include="Flags\brl.png" />
+    <Content Include="Flags\bsd.png" />
+    <Content Include="Flags\btn.png" />
+    <Content Include="Flags\bwp.png" />
+    <Content Include="Flags\byr.png" />
+    <Content Include="Flags\bzd.png" />
+    <Content Include="Flags\cad.png" />
+    <Content Include="Flags\cdf.png" />
+    <Content Include="Flags\cf.png" />
+    <Content Include="Flags\cg.png" />
+    <Content Include="Flags\chf.png" />
+    <Content Include="Flags\ci.png" />
+    <Content Include="Flags\clp.png" />
+    <Content Include="Flags\xaf.png" />
+    <Content Include="Flags\cny.png" />
+    <Content Include="Flags\cop.png" />
+    <Content Include="Flags\crc.png" />
+    <Content Include="Flags\cuc.png" />
+    <Content Include="Flags\cve.png" />
+    <Content Include="Flags\cy.png" />
+    <Content Include="Flags\czk.png" />
+    <Content Include="Flags\de.png" />
+    <Content Include="Flags\djf.png" />
+    <Content Include="Flags\dkk.png" />
+    <Content Include="Flags\dm.png" />
+    <Content Include="Flags\dop.png" />
+    <Content Include="Flags\dzd.png" />
+    <Content Include="Flags\ec.png" />
+    <Content Include="Flags\eek.png" />
+    <Content Include="Flags\egp.png" />
+    <Content Include="Flags\eh.png" />
+    <Content Include="Flags\ern.png" />
+    <Content Include="Flags\es.png" />
+    <Content Include="Flags\etb.png" />
+    <Content Include="Flags\eur.png" />
+    <Content Include="Flags\fi.png" />
+    <Content Include="Flags\fjd.png" />
+    <Content Include="Flags\fm.png" />
+    <Content Include="Flags\fr.png" />
+    <Content Include="Flags\ga.png" />
+    <Content Include="Flags\gbp.png" />
+    <Content Include="Flags\gd.png" />
+    <Content Include="Flags\gel.png" />
+    <Content Include="Flags\ghs.png" />
+    <Content Include="Flags\gmd.png" />
+    <Content Include="Flags\gnf.png" />
+    <Content Include="Flags\gq.png" />
+    <Content Include="Flags\gr.png" />
+    <Content Include="Flags\gtq.png" />
+    <Content Include="Flags\gw.png" />
+    <Content Include="Flags\gyd.png" />
+    <Content Include="Flags\hnl.png" />
+    <Content Include="Flags\hrk.png" />
+    <Content Include="Flags\htg.png" />
+    <Content Include="Flags\huf.png" />
+    <Content Include="Flags\idr.png" />
+    <Content Include="Flags\ie.png" />
+    <Content Include="Flags\ils.png" />
+    <Content Include="Flags\inr.png" />
+    <Content Include="Flags\iqd.png" />
+    <Content Include="Flags\irr.png" />
+    <Content Include="Flags\isk.png" />
+    <Content Include="Flags\it.png" />
+    <Content Include="Flags\jmd.png" />
+    <Content Include="Flags\jod.png" />
+    <Content Include="Flags\jpy.png" />
+    <Content Include="Flags\kes.png" />
+    <Content Include="Flags\kgs.png" />
+    <Content Include="Flags\khr.png" />
+    <Content Include="Flags\ki.png" />
+    <Content Include="Flags\kmf.png" />
+    <Content Include="Flags\kn.png" />
+    <Content Include="Flags\kpw.png" />
+    <Content Include="Flags\krw.png" />
+    <Content Include="Flags\ks.png" />
+    <Content Include="Flags\kwd.png" />
+    <Content Include="Flags\kzt.png" />
+    <Content Include="Flags\lak.png" />
+    <Content Include="Flags\lbp.png" />
+    <Content Include="Flags\lc.png" />
+    <Content Include="Flags\li.png" />
+    <Content Include="Flags\lkr.png" />
+    <Content Include="Flags\lrd.png" />
+    <Content Include="Flags\lsl.png" />
+    <Content Include="Flags\ltl.png" />
+    <Content Include="Flags\lu.png" />
+    <Content Include="Flags\lvl.png" />
+    <Content Include="Flags\lyd.png" />
+    <Content Include="Flags\mad.png" />
+    <Content Include="Flags\mc.png" />
+    <Content Include="Flags\mdl.png" />
+    <Content Include="Flags\me.png" />
+    <Content Include="Flags\mga.png" />
+    <Content Include="Flags\mh.png" />
+    <Content Include="Flags\mkd.png" />
+    <Content Include="Flags\ml.png" />
+    <Content Include="Flags\mmk.png" />
+    <Content Include="Flags\mnt.png" />
+    <Content Include="Flags\mro.png" />
+    <Content Include="Flags\mtl.png" />
+    <Content Include="Flags\mur.png" />
+    <Content Include="Flags\mvr.png" />
+    <Content Include="Flags\mwk.png" />
+    <Content Include="Flags\mxn.png" />
+    <Content Include="Flags\myr.png" />
+    <Content Include="Flags\mzn.png" />
+    <Content Include="Flags\nad.png" />
+    <Content Include="Flags\ne.png" />
+    <Content Include="Flags\ngn.png" />
+    <Content Include="Flags\nio.png" />
+    <Content Include="Flags\nl.png" />
+    <Content Include="Flags\nok.png" />
+    <Content Include="Flags\npr.png" />
+    <Content Include="Flags\nr.png" />
+    <Content Include="Flags\nzd.png" />
+    <Content Include="Flags\omr.png" />
+    <Content Include="Flags\pab.png" />
+    <Content Include="Flags\pen.png" />
+    <Content Include="Flags\pgk.png" />
+    <Content Include="Flags\php.png" />
+    <Content Include="Flags\pkr.png" />
+    <Content Include="Flags\pln.png" />
+    <Content Include="Flags\pt.png" />
+    <Content Include="Flags\pw.png" />
+    <Content Include="Flags\pyg.png" />
+    <Content Include="Flags\qar.png" />
+    <Content Include="Flags\ron.png" />
+    <Content Include="Flags\rsd.png" />
+    <Content Include="Flags\rub.png" />
+    <Content Include="Flags\rwf.png" />
+    <Content Include="Flags\sar.png" />
+    <Content Include="Flags\sbd.png" />
+    <Content Include="Flags\scr.png" />
+    <Content Include="Flags\sdg.png" />
+    <Content Include="Flags\sek.png" />
+    <Content Include="Flags\sgd.png" />
+    <Content Include="Flags\si.png" />
+    <Content Include="Flags\sk.png" />
+    <Content Include="Flags\sll.png" />
+    <Content Include="Flags\sm.png" />
+    <Content Include="Flags\sn.png" />
+    <Content Include="Flags\sos.png" />
+    <Content Include="Flags\srd.png" />
+    <Content Include="Flags\std.png" />
+    <Content Include="Flags\svc.png" />
+    <Content Include="Flags\syp.png" />
+    <Content Include="Flags\szl.png" />
+    <Content Include="Flags\td.png" />
+    <Content Include="Flags\tg.png" />
+    <Content Include="Flags\thb.png" />
+    <Content Include="Flags\tjs.png" />
+    <Content Include="Flags\tl.png" />
+    <Content Include="Flags\tmt.png" />
+    <Content Include="Flags\tnd.png" />
+    <Content Include="Flags\top.png" />
+    <Content Include="Flags\try.png" />
+    <Content Include="Flags\ttd.png" />
+    <Content Include="Flags\tv.png" />
+    <Content Include="Flags\twd.png" />
+    <Content Include="Flags\tzs.png" />
+    <Content Include="Flags\uah.png" />
+    <Content Include="Flags\ugx.png" />
+    <Content Include="Flags\usd.png" />
+    <Content Include="Flags\uyu.png" />
+    <Content Include="Flags\uzs.png" />
+    <Content Include="Flags\va.png" />
+    <Content Include="Flags\vc.png" />
+    <Content Include="Flags\vef.png" />
+    <Content Include="Flags\vnd.png" />
+    <Content Include="Flags\vuv.png" />
+    <Content Include="Flags\wst.png" />
+    <Content Include="Flags\xpf.png" />
+    <Content Include="Flags\yer.png" />
+    <Content Include="Flags\zar.png" />
+    <Content Include="Flags\zmk.png" />
+    <Content Include="Flags\zmw.png" />
+    <Content Include="Flags\zwl.png" />
+    <Content Include="Images\backspace.png" />
+    <Content Include="Images\back_white.png" />
+    <Content Include="Images\favorite.png" />
+    <Content Include="Images\favorite_white.png" />
+    <Content Include="Images\menu.png" />
+    <Content Include="Images\swap_circle.png" />
+    <Content Include="Images\swap.png" />
+    <Content Include="Images\search.png" />
+    <Content Include="Images\search_white.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AdView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageFavorites.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
+      <Name>Microsoft Advertising SDK for XAML</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Advertising.XAML">
+      <Version>10.1811.22001</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

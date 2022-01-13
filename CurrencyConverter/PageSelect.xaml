@@ -1,0 +1,214 @@
+﻿<Page
+    x:Class="CurrencyConverter.PageSelect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CurrencyConverter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="Black"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
+            <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
+            <Setter Property="Foreground" Value="{ThemeResource TextBoxForegroundThemeBrush}"/>
+            <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextSelectionHighlightColorThemeBrush}"/>
+            <Setter Property="Background" Value="{ThemeResource TextBoxBackgroundThemeBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource TextBoxBorderThemeBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}"/>
+            <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ContentControlFontSize}"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
+            <Setter Property="Padding" Value="{ThemeResource TextControlThemePadding}"/>
+            <Setter Property="Margin" Value="{ThemeResource TextControlMarginThemeThickness}"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="BorderElement"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BorderElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextSelectionHighlightColorThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PlaceholderTextContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="BorderElement" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Grid.Row="1"/>
+                            <ContentPresenter x:Name="HeaderContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}"  Grid.Row="0"/>
+                            <ScrollViewer x:Name="ContentElement" AutomationProperties.AccessibilityView="Raw" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsTabStop="False" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Margin="{TemplateBinding BorderThickness}" MinHeight="{ThemeResource TextControlThemeMinHeight}" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled"/>
+                            <ContentControl x:Name="PlaceholderTextContentPresenter" Content="{TemplateBinding PlaceholderText}" Foreground="{ThemeResource TextBoxPlaceholderTextThemeBrush}" FontSize="{ThemeResource ContentControlFontSize}" IsTabStop="False" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="AppListItemTemplate">
+            <Grid Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
+                <!--
+                Holding="onHolding" RightTapped="onRightTapped" 
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Add to Favorite" Click="onFlyoutAdd"/>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+                -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="15,0,10,0" >
+                    <Image  Source="{Binding Flag}" Width="50" Height="32" Margin="0" HorizontalAlignment="Center"/>
+                </Grid>
+                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,20">
+                    <TextBlock Text="{Binding Code}"  FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="10,0" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Name}"  FontSize="14" Foreground="DarkGray" VerticalAlignment="Center" Margin="10,0" />
+                </StackPanel>
+                <Button Grid.Column="2" Background="{x:Null}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="15,10" Click="onFavoriteClick" BorderThickness="0">
+                    <Image Source="Images/favorite.png" Width="24" Height="24" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridTitle" Grid.Row="0" Height="60" Background="{StaticResource AppForeground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" 
+                TabIndex="1"       
+                Content="Images/back_white.png"
+                Click="onBackClick"
+                ContentTemplate="{StaticResource IconTemplate}"
+                Style="{StaticResource IconStyle}"/>
+
+            <TextBlock Grid.Column="1"
+                VerticalAlignment="Center"
+                Foreground="White" FontSize="20"
+                Text="Choose Currency" 
+                HorizontalAlignment="Left" Margin="5,0"/>
+        </Grid>
+        <Grid x:Name="gridBody" Grid.Row="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid x:Name="gridSearch" Grid.Row="0" Margin="0" Background="#FFEEEEEE" Padding="10,0" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                       Width="36" Height="36" Click="onSearchClick"
+                       BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Center">
+                    <Image
+                       Source="Images/search.png" 
+                       Stretch="UniformToFill" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Center" Width="24" Height="24" />
+                </Button>
+
+                <TextBox Grid.Column="1" x:Name="textSearch" 
+                    TextWrapping="NoWrap" 
+                    VerticalAlignment="Center"
+                    Foreground="{x:Null}" FontSize="16" BorderThickness="0" 
+                    Style="{StaticResource TextBoxStyle1}" 
+                    PlaceholderText="Search currencies..." 
+                    InputScope="Search" 
+                    KeyDown="onSearchKeyDown" 
+                    TextChanged="onSearchTextChanged" Background="{x:Null}" BorderBrush="{x:Null}" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" />
+            </Grid>
+
+            <TextBlock Grid.Row="1" x:Name="textEmpty"
+                       Text="{Binding Empty}"  
+                       FontSize="20" Foreground="DarkGray" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Margin="10,0" />
+            
+                <ListView                 
+                    x:Name="listSelect" 
+                    Margin="0,0"     
+                    Grid.Row="1"
+                    HorizontalAlignment="Stretch" 
+                    HorizontalContentAlignment="Stretch"             
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Top"
+                    ShowsScrollingPlaceholders="False"             
+                    ItemsSource="{Binding Items}"
+                    ItemTemplate="{StaticResource AppListItemTemplate}"
+                    ItemContainerStyle="{StaticResource AppListItemStyle}"
+                    SelectionChanged="onItemSelected" >
+                </ListView>
+
+        </Grid>
+                
+        <Grid x:Name="gridRefresh" Grid.Row="2" Height="60" Background="{StaticResource AppForeground}" Padding="15,0,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                x:Name="textStamp"
+                VerticalAlignment="Center"
+                Foreground="White" FontSize="14"
+                Text="Last updated 08/02/2017 at 10:00" 
+                HorizontalAlignment="Left"/>
+
+            <Grid Grid.Column="1" VerticalAlignment="Center">
+                
+                <Button
+                    x:Name="buttonRefresh"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Foreground="White"
+                    Content="REFRESH"
+                    Click="onRefreshClick" HorizontalAlignment="Stretch"/>
+
+                <ProgressRing x:Name="progressRing" Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Width="40" Height="40"
+                    Foreground="White" IsActive="False"/>
+
+            </Grid>
+        </Grid>
+
+        <local:AdView Grid.Row="3" x:Name="adControl" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Padding="0" />
+
+    </Grid>
+</Page>

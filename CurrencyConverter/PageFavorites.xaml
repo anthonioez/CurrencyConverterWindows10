@@ -1,0 +1,120 @@
+﻿<Page
+    x:Class="CurrencyConverter.PageFavorites"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CurrencyConverter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="Black"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ControlTemplate x:Key="AppListItemControlTemplate" TargetType="ListViewItem">
+            <ListViewItemPresenter
+                    DragBackground="Transparent"
+                    DragForeground="Transparent"          
+                    FocusBorderBrush="Transparent"
+                    FocusSecondaryBorderBrush="Transparent"
+                    PlaceholderBackground="Transparent"
+                    PointerOverBackground="{ThemeResource AppHover}"
+                    PointerOverForeground="Transparent"
+                    PressedBackground="Transparent"
+                    SelectedBackground="Transparent"
+                    SelectedForeground="Transparent"
+                    SelectedPointerOverBackground="{ThemeResource AppSelectedHover}"
+                    SelectedPressedBackground="Transparent">
+            </ListViewItemPresenter>
+        </ControlTemplate>
+
+        <Style x:Key="AppListItemStyle" TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Transparent"/>
+            <Setter Property="Template" Value="{StaticResource AppListItemControlTemplate}"/>
+        </Style>
+
+        <DataTemplate x:Key="AppListItemTemplate">
+            <Grid x:Name="listItem" Margin="15,20" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Holding="onHolding" RightTapped="onRightTapped" Tapped="onItemTapped" >
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Set as From" Click="onFlyoutFrom" />
+                        <MenuFlyoutItem Text="Set as To" Click="onFlyoutTo" />
+                        <MenuFlyoutItem Text="Remove from Favorite" Click="onFlyoutDelete" />
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"  Source="{Binding Flag}" Width="48" Height="32" Margin="0"/>
+                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Code}"  FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="10,0" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Name}"  FontSize="14" Foreground="DarkGray" VerticalAlignment="Center" Margin="10,0" />
+                </StackPanel>
+                <TextBlock Grid.Column="2" Text="{Binding Amount}" FontSize="18"  Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridTitle" Grid.Row="0" Height="60" Background="{StaticResource AppForeground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" 
+                x:Name="ButtonLeft" 
+                TabIndex="1"       
+                Content="Images/back_white.png"
+                Click="onBackClick"
+                ContentTemplate="{StaticResource IconTemplate}"
+                Style="{StaticResource IconStyle}"/>
+
+            <TextBlock Grid.Column="1"
+                VerticalAlignment="Center"
+                Foreground="White" FontSize="20"
+                Text="Favorite Currencies" 
+                HorizontalAlignment="Left" Margin="5,0"/>
+        </Grid>
+        <Grid x:Name="gridBody" Grid.Row="1" Background="White">
+            
+            <TextBlock Grid.Row="1" Text="{Binding Empty}"  
+                       FontSize="20" Foreground="DarkGray" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0" />
+
+            <ScrollViewer Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <ListView                 
+                    x:Name="listFavs" 
+                    Margin="0,0"                
+                    HorizontalAlignment="Stretch" 
+                    HorizontalContentAlignment="Stretch"             
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Top"
+                    ShowsScrollingPlaceholders="False"             
+                    ItemsSource="{Binding Items}"
+                    ItemTemplate="{StaticResource AppListItemTemplate}"
+                    ItemContainerStyle="{StaticResource AppListItemStyle}"
+                    SelectionChanged="onItemSelected" >
+                </ListView>
+            </ScrollViewer>
+
+            <ProgressRing x:Name="progressRing" Grid.Row="0" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center" Width="40" Height="40"
+                          Foreground="{ThemeResource AppForeground}" IsActive="False"/>
+        </Grid>
+
+        <local:AdView Grid.Row="2" x:Name="adControl" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Padding="0" />
+    </Grid>
+</Page>
